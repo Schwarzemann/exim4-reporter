@@ -1,0 +1,15 @@
+[Unit]
+Description=Exim4 Reporter
+Documentation=man:exim4(8)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=@BINDIR@/exim4-reporter --daemon -c @CONFIG_DIR@/reporter.conf
+Restart=on-failure
+RestartSec=30s
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target
